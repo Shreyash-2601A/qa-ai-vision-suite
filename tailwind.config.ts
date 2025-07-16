@@ -52,16 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				// AI-QA Brand Colors
+				'ai-blue': 'hsl(var(--ai-blue))',
+				'ai-blue-light': 'hsl(var(--ai-blue-light))',
+				'ai-purple': 'hsl(var(--ai-purple))',
+				'ai-teal': 'hsl(var(--ai-teal))',
+				'tech-gray': 'hsl(var(--tech-gray))',
+				'success-green': 'hsl(var(--success-green))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

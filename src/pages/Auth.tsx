@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/useAuth';
+import { Mail, Lock, User } from 'lucide-react';
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -73,43 +74,67 @@ const Auth = () => {
           </TabsList>
           
           <TabsContent value="login">
-            <Card>
-              <CardHeader>
-                <CardTitle>Sign In</CardTitle>
-                <CardDescription>
-                  Enter your credentials to access your account
+            <Card className="border-2 shadow-lg">
+              <CardHeader className="space-y-3 pb-6">
+                <div className="flex items-center space-x-2">
+                  <div className="p-2 rounded-full bg-primary/10">
+                    <Lock className="w-5 h-5 text-primary" />
+                  </div>
+                  <CardTitle className="text-2xl text-ai-blue">Sign In</CardTitle>
+                </div>
+                <CardDescription className="text-base">
+                  Welcome back! Please enter your credentials to access your account
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleLogin} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="login-email">Email</Label>
-                    <Input
-                      id="login-email"
-                      type="email"
-                      placeholder="Enter your email"
-                      value={loginEmail}
-                      onChange={(e) => setLoginEmail(e.target.value)}
-                      required
-                    />
+              <CardContent className="space-y-6">
+                <form onSubmit={handleLogin} className="space-y-6">
+                  <div className="space-y-3">
+                    <Label htmlFor="login-email" className="text-sm font-medium text-foreground">
+                      Email Address
+                    </Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                      <Input
+                        id="login-email"
+                        type="email"
+                        placeholder="Enter your email address"
+                        className="pl-10 h-12 border-2 focus:border-primary transition-colors"
+                        value={loginEmail}
+                        onChange={(e) => setLoginEmail(e.target.value)}
+                        required
+                      />
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="login-password">Password</Label>
-                    <Input
-                      id="login-password"
-                      type="password"
-                      placeholder="Enter your password"
-                      value={loginPassword}
-                      onChange={(e) => setLoginPassword(e.target.value)}
-                      required
-                    />
+                  <div className="space-y-3">
+                    <Label htmlFor="login-password" className="text-sm font-medium text-foreground">
+                      Password
+                    </Label>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                      <Input
+                        id="login-password"
+                        type="password"
+                        placeholder="Enter your password"
+                        className="pl-10 h-12 border-2 focus:border-primary transition-colors"
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        required
+                      />
+                    </div>
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full" 
+                    className="w-full h-12 text-base font-semibold bg-ai-blue hover:bg-ai-blue-light transition-all duration-200 shadow-lg hover:shadow-xl" 
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Signing in...' : 'Sign In'}
+                    {isLoading ? (
+                      <div className="flex items-center space-x-2">
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Signing in...</span>
+                      </div>
+                    ) : (
+                      'Sign In'
+                    )}
                   </Button>
                 </form>
               </CardContent>
